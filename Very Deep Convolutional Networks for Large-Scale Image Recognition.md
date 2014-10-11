@@ -11,6 +11,10 @@
 	## 6. Testing> 测试使用如下步骤：
 + 首先进行等比例缩放，短边长度Q大于224，Q的意义与S相同，不过S是训练集中的，Q是测试集中的参数。Q不必等于S，相反的，对于一个S，使用多个Q值进行测试，然后去平均会使效果变好。+ 然后，按照本文参考文献16的方式对测试数据进行测试。	+ 将全连接层转换为卷积层，第一个全连接转换为7×7的卷积，第二个转换为1×1的卷积。	+ Resulting net is applied to the whole image by convolving the filters in each layer with the full-size input. The resulting output feature map is a class score map with the number channels equal to the number of classes, and the variable spatial resolution, dependent on the input image size.	+ Finally, class score map is spatially averaged(sum-pooled) to obtain a fixed-size vector of class scores of the image.
 	## 7. Implementation+ 使用C++ Caffe toolbox实现	+ 支持单系统多GPU	+ 多GPU把batch分为多个GPU-batch，在每个GPU上进行计算，得到子batch的梯度后，以平均值作为整个batch的梯度。	+ 论文的参考文献[9]中提出了很多加速训练的方法。论文实验表明，在4-GPU的系统上，可以加速3.75倍。
-	## 8. Reference
+## 8. Experiments> 共进行三组实验：
+### 8.1	Configuration Comparison> 使用图1中的CNN结构进行实验，在C/D/E网络结构上进行多尺度的训练，注意的是，该组实验的测试集只有一个尺度。如下图所示： > Figure 3 Performance at a single test scale
+### 8.2	Multi-Scale Comparison> 测试集多尺度，且考虑到尺度差异过大会导致性能的下降，所以测试集的尺度Q在S的上下32内浮动。对于训练集是区间尺度的，测试集尺度为区间的最小值、最大值、中值。 > Figure 4 Convnet performance at multiple test scales
+### 8.3	Convnet Fusion> 模型融合，方法是取其后验概率估计的均值。
+> 融合图3和图4中两个最好的model可以达到更好的值，融合七个model会变差。 ## 9. Reference
 > [1]. Simonyan K, Zisserman A. Very Deep Convolutional Networks for Large-Scale Image Recognition[J]. arXiv preprint arXiv:1409.1556, 2014.
 > [2]. Krizhevsky A, Sutskever I, Hinton G E. Imagenet classification with deep convolutional neural networks[C]//Advances in neural information processing systems. 2012: 1097-1105.
