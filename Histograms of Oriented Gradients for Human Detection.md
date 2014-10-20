@@ -3,7 +3,8 @@
 ## 2. Important Properties> 1. Fine-scale gradients，较好尺度的梯度计算> 2. Fine orientation binning，较好的方向分区> 3. Relatively coarse spatial binning，相对粗粒度的空间分区> 4. High-quality local contrast normalization in overlapping descriptor blocks，在重叠块中的高质量局部对比度归一化
 ## 3. Algorithms	Default detector properties：
 + RGB colour space with no gamma correction.+ [-1,0,1] gradient filter with no smoothing.+ Linear gradient voting into 9 orientation bins in 0-180+ 16×16 pixel blocks of four 8×8 pixel cells.+ Gaussian spatial window with variance=8.+ L2-Hys(Lowe-style clipped L2 norm) block normalization.+ Block spacing stride of 8 pixels(hence 4-fold coverage of each cell).+ 64×128 detection window+ Linear SVM classifier
-### 3.1 Process > 基本概念：
+### 3.1 Process
+![process](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/2-1.png) > 基本概念：
 + Cell：统计梯度直方图的最小单元，论文中为8*8。+ Blocks：做直方图归一化的单元，论文中为2×2个cell，即block大小为16×16.> Hog+SVM算法的过程分为如下几个步骤：
 + 使用gamma变换对图片进行归一化。+ 计算每个像素点的梯度方向。+ 在Cell中对梯度方向进行统计，得到直方图。+ 在Block中对Cell的梯度直方图进行归一化，Block以窗口滑过每个Cell，Block可重叠。+ 将每个block的直方图串联起来，形成整幅图片的特征向量。+ 这里需要注意，每个Cell可能作为多个Block的子部分被归一化放到整幅图片的特征向量中。+ 使用Linear SVM算法对特征向量进行分类，得到最终模型。
 ### 3.2 Gamma / Colour Normalization
@@ -21,4 +22,9 @@
 ## 4. Experiment	共进行如下几组实验:
 + Compare with previous algorithm	+ Generalized Haar Wavelets	+ PCA-Sift	+ Shape Contexts+ Effect of gradient scale	+ 在计算梯度时高斯平滑带来的效果测试+ Effect of orientation bins’ number	+ 考察角度分区带来的效果变化+ Effect of normalization method	+ 在block归一化时，考察不同归一化方法的效果+ Effect of overlap	+ 在block与cell进行组合时，不同的overlap带来的效果。此时cell的大小为8×8.	+ 注意：这里有一个参数stride，表示block每次滑动间隔的像素数。+ Block大小与Cell大小不同带来的效果变化+ 检测窗口大小不同带来的效果变化+ SVM参数带来的效果变化
 > 检验指标：	+ Miss Rate：错检率，所有判为有行人的sample中，被错判（没有行人被判为有行人）的样本比例。+ FPPW：False Positives Per Window，平均每个窗口的漏检率，漏检率为所有有行人的sample中，被判为没有行人的样本比例。平均到每个检测窗口
-## 5. Reference+ [1]. Dalal N, Triggs B. Histograms of oriented gradients for human detection[C]//Computer Vision and Pattern Recognition, 2005. CVPR 2005. IEEE Computer Society Conference on. IEEE, 2005, 1: 886-893.+ [2].	http://blog.csdn.net/pp5576155/article/details/7023709+ [3].	http://blog.csdn.net/icvpr/article/details/8454527+ [4].	http://blog.csdn.net/carson2005/article/details/7782726
+
+## 5. Hog算子深入理解
+> Hog算子最重要的思想是，在一副图像中，局部目标的appearance和shape能够被梯度或边缘的方向密度分布很好的描述。	Hog算子有很多优点：
++ 由于其在图像的局部细胞单元上操作，所以对图像的几何（geometric）和光学（photometric）形变都能保持很好的不变形，因为这两种形变只会出现在更大的空间区域上。
++ 实验表明，粗的空域抽样（coarse spatial sampling）、精细的方向抽样（fine orientation sampling）以及较强的局部光学归一化（strong local photometric normalization）等条件下，行人只要大体能够保持直立的姿势，容许有一些细微的肢体动作而不影响检测效果。
+> R-HOG跟SIFT描述器看起来很相似，但他们的不同之处是：R-HOG是在单一尺度下、密集的网格内、没有对方向排序的情况下被计算出来（are computed in dense grids at some single scale without orientation alignment）；而SIFT描述器是在多尺度下、稀疏的图像关键点上、对方向排序的情况下被计算出来（are computed at sparse, scale-invariant key image points and are rotated to align orientation）。补充一点，R-HOG是各区间被组合起来用于对空域信息进行编码（are used in conjunction to encode spatial form information），而SIFT的各描述器是单独使用的（are used singly）。## 6. Reference+ [1]. Dalal N, Triggs B. Histograms of oriented gradients for human detection[C]//Computer Vision and Pattern Recognition, 2005. CVPR 2005. IEEE Computer Society Conference on. IEEE, 2005, 1: 886-893.
