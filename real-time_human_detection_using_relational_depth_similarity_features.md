@@ -38,13 +38,13 @@
 ![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-5.png) 
 > H(x) is the final strong classifier, and h(x) is a weak classifier.
 ### 4.3  Classification adjusted for occlusions> Depth information is useful in a confusing scene with a number of people overlapping. Combine the overlapping information into the classifier in a simple way. Process is below:
-a. Define occlusion: any object region that is closer to the camera than the detection window
-b. Extraction of occlusion regions:
-	![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-6.png) 
-c. Calculate the proportion of occlusion regions:
-	![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-7.png)
- d. Combine the rate OR into the Adaboost algorithm:
-	![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-8.png)
++ Define occlusion: any object region that is closer to the camera than the detection window
++ Extraction of occlusion regions:
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-6.png) 
++ Calculate the proportion of occlusion regions:
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-7.png)
+ + Combine the rate OR into the Adaboost algorithm:
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-8.png)
 	 ## 5  Mean-shift clustering> Mean-shift clustering is a method that clustering the detect windows which detect a same object into one window. In image space, detection window could be erroneously integrated if humans overlap in them. But in 3D space, this problem can be solved easily.
 ![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-9.png) 
 ## 6  Experiments	There are two expriments:
