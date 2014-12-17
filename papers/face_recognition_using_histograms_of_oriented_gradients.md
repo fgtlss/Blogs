@@ -7,9 +7,9 @@
 + Final error may crucially depend on the reliability of the landmark localizations, and the landmarks are not precisely due to occlusions, strong illuminations or pose changes.## 5. Improved Method by this paper+ First normalize the face and then extract HOG features from a regular grid. The grid is formed by placing equal side patches around a first cell centered in the image, until the whole image is covered. + The paper hypothesize that a better result could be obtained by combining information from different patch sizes. And the paper considered a new fusion strategy that is the product combination of the classifiers at patch sizes.+ Several overlapping patches are used, so the final feature representation will be highly redundant, So dimensionality reduction is necessary.
 ### 5.1 Detail of the fusion strategy+ R individual classifications c_k (k=1,…,R), each one trained using Hog features with different patch sizes. Each classifier gives one input sample x_k a posterior probability vector:
 
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/4-1.png)
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/4-1.png)
 
 + The product rule cosists of fusing the final decision as:
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/4-2.png)
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/4-2.png)
 ## 6. Experiments+ Effect of the facial feature localization error on the final recognition performance. Large error on the localization of facial features leads to bad classification performance.	+ Evaluate the performance of the method in 4.	+ Calculate the dispersion of coordinates(ellpse fitting) and the total sum of variances of the localized landmarks. Bigger variance, bad performance.+ Extracting regular grids and patch size combination	+ Hog features are processed by PCA and LDA.	+ Nearest classifier with Enclidean and cosine distances is used.	+ Combination of 8×8, 12×12, 16×16, 20×20, 24×24, 28×28 patches.	+ Compare of computation time of the landmark method and the regular grid method.
 	## 7. Reference+ [1]. Déniz O, Bueno G, Salido J, et al. Face recognition using histograms of oriented gradients[J]. Pattern Recognition Letters, 2011, 32(12): 1598-1603.

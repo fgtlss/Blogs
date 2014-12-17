@@ -4,7 +4,7 @@
 ## 3. Algorithms	Default detector properties：
 + RGB colour space with no gamma correction.+ [-1,0,1] gradient filter with no smoothing.+ Linear gradient voting into 9 orientation bins in 0-180+ 16×16 pixel blocks of four 8×8 pixel cells.+ Gaussian spatial window with variance=8.+ L2-Hys(Lowe-style clipped L2 norm) block normalization.+ Block spacing stride of 8 pixels(hence 4-fold coverage of each cell).+ 64×128 detection window+ Linear SVM classifier
 ### 3.1 Process
-![process](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/2-1.png) > 基本概念：
+![process](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/2-1.png) > 基本概念：
 + Cell：统计梯度直方图的最小单元，论文中为8×8。+ Blocks：做直方图归一化的单元，论文中为2×2个cell，即block大小为16×16.> Hog+SVM算法的过程分为如下几个步骤：
 + 使用gamma变换对图片进行归一化。+ 计算每个像素点的梯度方向。+ 在Cell中对梯度方向进行统计，得到直方图。+ 在Block中对Cell的梯度直方图进行归一化，Block以窗口滑过每个Cell，Block可重叠。+ 将每个block的直方图串联起来，形成整幅图片的特征向量。+ 这里需要注意，每个Cell可能作为多个Block的子部分被归一化放到整幅图片的特征向量中。+ 使用Linear SVM算法对特征向量进行分类，得到最终模型。
 ### 3.2 Gamma / Colour Normalization

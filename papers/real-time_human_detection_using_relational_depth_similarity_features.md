@@ -11,8 +11,8 @@
 ## 3  Extraction
 ### 3.1  Local features based on depth information+ Divide depth image into local regions with cell of size 8*8 pixels+ Compute depth histograms from the depth information+ Normalize the histograms so that the total value of each depth histogram is 1
 
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-1.png)+ Compute the similarity of two depth histograms using equation below
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-2.png) 
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/3-1.png)+ Compute the similarity of two depth histograms using equation below
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/3-2.png) 
 	### 3.2  Varied rectangular region sizes
 a. Control the window size to 64*128 so it can be divided into 8*16 cells.
 b. There are 492 rectangular regions obtained by varying the cell units of the rectangular region from 1*1 to 8*8.
@@ -28,25 +28,25 @@
 d.	Use Real AdaBoost to classify each detection window is of human or not human.
 	流程如下图：
 
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-3.png) ### 4.1  Raster scaning in 3D space> Convolutional human detection methods involve repeated raster scans while the scale of the detection window varied, so there are many windows do not match the dimisions of humans.
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/3-3.png) ### 4.1  Raster scaning in 3D space> Convolutional human detection methods involve repeated raster scans while the scale of the detection window varied, so there are many windows do not match the dimisions of humans.
 > With the depth information, we can use fixed window size with different depth to detect humans with different scales. Process can be seen below:
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-4.png) 
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/3-4.png) 
 > Window with different depth can projected to the 2d image using a projection matrix which is the equation 7 in the paper.
 ### 4.2  Classification> Using Real Adaboost algorithm to classify the extracted features.
 > Adaboost algorithm can ensemble a number of weak classifiers to build a strong classifer.
 	
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-5.png) 
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/3-5.png) 
 > H(x) is the final strong classifier, and h(x) is a weak classifier.
 ### 4.3  Classification adjusted for occlusions> Depth information is useful in a confusing scene with a number of people overlapping. Combine the overlapping information into the classifier in a simple way. Process is below:
 + Define occlusion: any object region that is closer to the camera than the detection window
 + Extraction of occlusion regions:
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-6.png) 
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/3-6.png) 
 + Calculate the proportion of occlusion regions:
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-7.png)
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/3-7.png)
  + Combine the rate OR into the Adaboost algorithm:
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-8.png)
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/3-8.png)
 	 ## 5  Mean-shift clustering> Mean-shift clustering is a method that clustering the detect windows which detect a same object into one window. In image space, detection window could be erroneously integrated if humans overlap in them. But in 3D space, this problem can be solved easily.
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/3-9.png) 
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/3-9.png) 
 ## 6  Experiments	There are two expriments:
 	+ Comparison of three feature extraction methods:
 

@@ -12,14 +12,14 @@
 > Significance of the one sample problem:
 + Easy to collect samples.+ Save storage cost.+ Save computational cost.
 ## 4	Recognizing from one sample per person
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/7-1.png)
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/7-1.png)
  + Holistic method: identify a face using the whole face as input.+ Local method: use local facial features.+ Hybrid method: use both local and holistic features to recognize a face.
 在下面的内容中，我选择了上表中跟现在研究的算法相关的技术进行说明。
 # 5	Enlarge the training Set
 + Construct new representations	+ Mining more information from the face at hand
-	![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/7-2.png) + Create novel visual images	+ Visual sample generation method concentrates on learning extra information from the 	domain besides the training set.
-	![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/7-3.png) ## 6	Local apperence-based method
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/7-4.png)
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/7-5.png)  ## 7	Reported results
-![equation1](https://raw.githubusercontent.com/stdcoutzyx/Paper_Read/master/imgs/7-6.png) ## 8	Reference
+	![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/7-2.png) + Create novel visual images	+ Visual sample generation method concentrates on learning extra information from the 	domain besides the training set.
+	![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/7-3.png) ## 6	Local apperence-based method
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/7-4.png)
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/7-5.png)  ## 7	Reported results
+![equation1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/7-6.png) ## 8	Reference
 [1]. Tan X, Chen S, Zhou Z H, et al. Face recognition from a single image per person: A survey[J]. Pattern Recognition, 2006, 39(9): 1725-1745.
