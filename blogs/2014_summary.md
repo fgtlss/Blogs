@@ -24,7 +24,9 @@
 
 八月起到十月，开始学习深度学习尤其是卷积神经网络，并开始阅读这方面的论文，开始使用cuda-convnet库进行ImageNet图像分类的实验。这一阶段的目标是重现Hinton的那篇经典论文《Imagenet classification with deep convolutional neural networks》的结果。cuda-convnet是论文中提及的库实现，但是里面并没有论文中描述的那些特性。后来发现了cuda-convnet2，很好的实现了论文中的各项功能。
 
-十一月与十二月，主要在做两方面的研究，一方面是人脸识别，考虑将卷积神经网络应用到人脸识别中去，这一点后来发现了DeepID系列算法，在人脸识别中把卷积神经网络运用的炉火纯青，读了该系列算法的一系列论文后，总结了博文http://blog.csdn.net/stdcoutzyx/article/details/42091205。另一方面则集中在进行高维图像索引方面，刚开始做不细表。
+十一月与十二月，主要在做两方面的研究，一方面是人脸识别，考虑将卷积神经网络应用到人脸识别中去，这一点后来发现了DeepID系列算法，在人脸识别中把卷积神经网络运用的炉火纯青，读了该系列算法的一系列论文后，总结了博文
+http://blog.csdn.net/stdcoutzyx/article/details/42091205。
+另一方面则集中在进行高维图像索引方面，刚开始做不细表。
 
 # 感悟与思考
 
