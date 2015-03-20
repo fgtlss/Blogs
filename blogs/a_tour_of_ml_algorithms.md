@@ -1,6 +1,8 @@
 # 机器学习算法概览
 
 
+本文是翻译文章，但我并未逐字句的翻译，而是有所删减，并加入了一些自己的补充。
+
 机器学习（Machine Learning， ML）是什么，作为一个MLer，经常难以向大家解释何为ML。久而久之，发现要理解或解释机器学习是什么，可以从机器学习可以解决的问题这个角度来说。对于MLers，理解ML解决的问题的类型也有助于我们更好的准备数据和选择算法。
 
 # 十个机器学习问题样例
@@ -163,11 +165,10 @@ Ensemble methods(组合方法)由许多小的模型组成，这些模型经过�
 + Gradient Boosting Machines (GBM)
 + Random Forest
 
-#	原文及链接：
+#	原文链接
 	
-	A Tour of Machine Learning Algorithms
-+ http://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/
-+ http://machinelearningmastery.com/practical-machine-learning-problems/
++ [a tour of machine learning algorithm](http://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/)
++ [practical machine learning problems](http://machinelearningmastery.com/practical-machine-learning-problems/)
 
 
 
