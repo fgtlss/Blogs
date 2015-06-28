@@ -182,5 +182,7 @@ Parameter Server的架构如下，这是一个标准的传统分布式的k-v存�
 # 参考资料
 
 [1]. Chilimbi T, Suzue Y, Apacible J, et al. Project adam: Building an efficient and scalable deep learning training system[C]//11th USENIX Symposium on Operating Systems Design and Implementation (OSDI 14). 2014: 571-582.
+
 [2]. Krizhevsky A, Sutskever I, Hinton G E. Imagenet classification with deep convolutional neural networks[C]//Advances in neural information processing systems. 2012: 1097-1105.
+
 [3]. http://www.tuicool.com/articles/IbAZFb
