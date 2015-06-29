@@ -44,7 +44,7 @@ Adam框架仍然基于Multi-Spert架构，这个架构的大体含义就是将�
 
 adam训练的仍然是Alex提出的那个模型，五个卷积层搭配三个全连接层。在adam中，将这些模型垂直切分。如下所示：
 
-![image1](./imgs/n5-1.png)
+![image1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n5-1.png)
 
 ## Multi-threaded Training
 
@@ -102,7 +102,7 @@ adam训练的仍然是Alex提出的那个模型，五个卷积层搭配三个全
 
 Parameter Server的架构如下，这是一个标准的传统分布式的k-v存储结构，但是对于要训练卷积神经网络来说，参数的更新速度太快了，还需要优化。
 
-![img](./imgs/n5-2.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n5-2.png)
 
 ## Throughput Optimizations
 
@@ -140,34 +140,34 @@ Parameter Server的架构如下，这是一个标准的传统分布式的k-v存�
 
 在没有参数服务器的情况下，训练模型，看看每秒钟可以训练多少链接。可以看到，加速比是超线性的，因为机器越多，内存越大，数据在内存中，自然快。
 
-![img3](./imgs/n5-3.png)
+![img3](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n5-3.png)
 
 ## Parameter Server
 
 加上参数服务器后，再看看加速比情况。可以发现，加速比比纯本地计算要少，但克服了8机器时的权重更新方法遇到的瓶颈。
 
-![img3](./imgs/n5-4.png)
+![img3](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n5-4.png)
 
 ## Scaling with more workers
 
 将用于训练的机器增多，查看加速比。用于训练的机器增多，保证每台机器上的参数数目不变，增大模型大小，从而机器数目增多，但由图可见，网络上的通信并未影响加速。
 
-![img3](./imgs/n5-5.png)
+![img3](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n5-5.png)
 
 
 ## Scaling with more Replicas
 
 模型大小不变，但增大参数的副本数目，也就是说，数据的并行化变大了。看看加速情况。
 
-![img3](./imgs/n5-6.png)
+![img3](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n5-6.png) 
 
 ## performance
 
 效果如下，提升大大滴。随着模型变大，效果也变得越好。
 
-![img3](./imgs/n5-7.png)
+![img3](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n5-7.png)
 
-![img3](./imgs/n5-8.png)
+![img3](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n5-8.png)
 
 # 总结
 
