@@ -19,7 +19,7 @@ FaceNet算法有如下要点：
 
 大体架构与普通的卷积神经网络十分相似：
 
-![img](./imgs/n8-1.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n8-1.png)
 
 如图所示：Deep Architecture就是卷积神经网络去掉sofmax后的结构，经过L2的归一化，然后得到特征表示，基于这个特征表示计算三元组损失。
 
@@ -27,15 +27,15 @@ FaceNet算法有如下要点：
 
 在看FaceNet的目标函数前，其实要想一想DeepID2和DeepID2+算法，他们都添加了验证信号，但是是以加权的形式和softmax目标函数混合在一起。Google做的更多，直接替换了softmax。
 
-![img](./imgs/n8-2.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n8-2.png)
 
 所谓的三元组就是三个样例，如(anchor, pos, neg)，其中，x和p是同一类，x和n是不同类。那么学习的过程就是学到一种表示，对于尽可能多的三元组，使得anchor和pos的距离，小于anchor和neg的距离。即：
 
-![img](./imgs/n8-3.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n8-3.png)
 
 所以，变换一下，得到目标函数：
 
-![img](./imgs/n8-4.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n8-4.png)
 
 目标函数的含义就是对于不满足条件的三元组，进行优化；对于满足条件的三元组，就pass先不管。
 
@@ -57,7 +57,7 @@ FaceNet算法有如下要点：
 
 除了上述策略外，还可能会选择一些semi-hard的样例，所谓的semi-hard即不考虑alpha因素，即：
 
-![img](./imgs/n8-5.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n8-5.png)
 
 # 网络模型
 
@@ -87,21 +87,21 @@ FaceNet算法有如下要点：
 
 ## 网络结构的不同
 
-![img](./imgs/n8-6.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n8-6.png)
 
-![img](./imgs/n8-7.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n8-7.png)
 
 ## 图像质量的不同
 
-![img](./imgs/n8-8.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n8-8.png)
 
 ## 最终生成向量表示的大小的不同
 
-![img](./imgs/n8-9.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n8-9.png)
 
 ## 训练数据大小的不同
 
-![img](./imgs/n8-10.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n8-10.png)
 
 ## 对齐与否
 
