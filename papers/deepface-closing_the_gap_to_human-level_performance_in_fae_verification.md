@@ -10,7 +10,7 @@
 
 ## 人脸对齐流程
 
-![img](./imgs/n9-1.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n9-1.png)
 
 分为如下几步：
 
@@ -27,7 +27,7 @@ h. 一个新角度的人脸（在论文中没有用到）
 
 ## 人脸表示
 
-![img](./imgs/n9-2.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n9-2.png)
 
 经过3D对齐以后，形成的图像都是152×152的图像，输入到上述网络结构中，该结构的参数如下：
 
@@ -69,13 +69,13 @@ h. 一个新角度的人脸（在论文中没有用到）
 
 加权卡方距离计算公式如下：
 
-![img](./imgs/n9-3.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n9-3.png)
 
 其中，加权参数由线性SVM计算得到。
 
 Siamese网络结构是成对进行训练，得到的特征表示再使用如下公式进行计算距离：
 
-![img](./imgs/n9-4.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n9-4.png)
 
 其中，参数alpha是训练得到。Siamese网络与FaceNet就很像了。
 
@@ -96,15 +96,15 @@ Siamese网络结构是成对进行训练，得到的特征表示再使用如下�
 - 训练使用的照片数目不同(10%/20%/50%)
 - 使用的网络不同(去掉第三层/去掉第4、5层/去掉第3、4、5层)
 
-![img](./imgs/n9-6.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n9-6.png)
 
 ## Results on LFW
 
-![img](./imgs/n9-7.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n9-7.png)
 
 ## Results on YTF
 
-![img](./imgs/n9-8.png)
+![img](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/papers/imgs/n9-8.png)
 
 # 总结
 
