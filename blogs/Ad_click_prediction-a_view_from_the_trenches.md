@@ -42,21 +42,21 @@
 
 OGD的参数更新公式为：
 
-![img1](./imgs/n6-3.png)
+![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-3.png)
 
 FTRL-Proximal与OGD的更新规则不同，是：
 
-![img1](./imgs/n6-1.png)
+![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-1.png)
 
 而FTRL-Proximal的一个算法实现如下：
 
-![img1](./imgs/n6-2.png)
+![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-2.png)
 
 当然，上述伪代码不仅有FTRL的实现，还包含了`per-coordinate`学习速率设置。
 
 FTRL与其他方法的对比结果如下：
 
-![img1](./imgs/n6-4.png)
+![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-4.png)
 
 可以发现，FTRL在稀疏度和效果上面全面碾压RDA。
 
@@ -64,7 +64,7 @@ FTRL与其他方法的对比结果如下：
 
 OGD标准的方法是有一个全局的学习速率，但在离散LR中，各个特征出现的次数是不一样的，有些特征出现的次数多，有些少。所以，Per-Coordinate的方式就是对每个不同的特征，根据该特征在样本中出现的次数来推算它的学习率。更具体一些的解释就是，一个特征，如果出现的次数多，那么模型在该特征上学到的参数就已经比较可信了，所以学习率可以不用那么高；而对于出现次数少的特征，认为在这个特征上的参数还没有学完全，所以要保持较高的学习率来使之尽快适应新的数据。一个可能的学习率计算方法如下。
 
-![img1](./imgs/n6-5.png)
+![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-5.png)
 
 即步长等于历次梯度的平方和的开方的倒数
 
@@ -87,7 +87,7 @@ OGD标准的方法是有一个全局的学习速率，但在离散LR中，各个
 
 两种方法都能在AucLoss降低较小的情况下很大的降低内存，具体评测如下：
 
-![img1](./imgs/n6-6.png)
+![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-6.png)
 
 ## Encoding Values with Fewer Bits
 
@@ -115,7 +115,7 @@ OGD标准的方法是有一个全局的学习速率，但在离散LR中，各个
 
 针对Per-Coordinate中的步长计算方法，使用记录count的方法来模拟梯度的平方和。此时，需要记录下正例的数目和反例的数目。假设，模型准确的学到了概率，那么用下面的公式去模拟(不知道为啥)
 
-![img1](./imgs/n6-7.png)
+![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-7.png)
 
 这种近似是放的太宽，但是anyway， works well.
 
@@ -123,7 +123,7 @@ OGD标准的方法是有一个全局的学习速率，但在离散LR中，各个
 
 为了节省内存，可以降低数据量，因为点击率预估的数据是偏斜的，有点击的数据大约占10%左右。所以，可以将负样本进行加权，然后在训练的时候，给负样本增加权重。比如，以r的概率抽取负样本，那么，负样本的概率可以加权为r的倒数。
 
-![img1](./imgs/n6-8.png)
+![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-8.png)
 
 # 评测模型
 
@@ -139,7 +139,7 @@ online test的好处就是可以用100%的数据做测试集和训练集。这�
 
 在真实场景下，往往总体效果的提升来源于某一个领域的数据的预测变好了，并不能说在所有数据上都变好。为了更加深刻的理解这种现象，文章开发了一个web可视化工具，GridViz，用来查看不同领域的点击率的预估结果，当然，因为划分数据的方法有千万种，所以GridViz还具有交互功能，下图就是一个样例：
 
-![img1](./imgs/n6-9.png)
+![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-9.png)
 
 # Confidence Estimates
 
@@ -154,7 +154,7 @@ online test的好处就是可以用100%的数据做测试集和训练集。这�
 本文提出一种uncertainty score来衡量不确定性。本文之前也提过，对于每个特征，都会记录一个counter，counter的大小决定着该特征的学习速率，学习速率越小则表示该特征越可信，因而有，
 
 
-![img1](./imgs/n6-10.png)
+![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-10.png)
 
 使用u(x)作为uncertainty score，它的计算量与prediction相当。
 
@@ -170,7 +170,7 @@ online test的好处就是可以用100%的数据做测试集和训练集。这�
 - m2运行时同时计算出u(x)。
 - 得到u(x)和e<sub>t</sub>的关系，如图所示：
 
-![img1](./imgs/n6-11.png)
+![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-11.png)
 
 	这里始终不明白为何要用一个模型的预测结果作为真实值去计算，权且当做保留问题吧
 
@@ -188,7 +188,7 @@ online test的好处就是可以用100%的数据做测试集和训练集。这�
 
 - 简单的变换方法如下，此时需要训练得到k和r的值
   
-  ![img1](./imgs/n6-12.png)
+  ![img1](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs/imgs/n6-12.png)
  
 - 复杂一些的变换方法为isotonic regression，即计算一个加权的最小方差拟合。
 
