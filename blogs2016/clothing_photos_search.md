@@ -53,7 +53,7 @@
 
 其实很简单，就是一个pair对图像抽出来的特征拼到一起，然后学习出来一个NN两类分类器，分类器的最高层使用逻辑斯蒂回归模型。
 
-![](./imgs/n1-1.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs/n1-1.png)
 
 而所谓的类别独立就是指先把所有图像都放到一起训练得到初步参数，然后对于每个类别，再用该类别的图像对参数进行细粒度的调整。
 
@@ -61,7 +61,7 @@
 
 各个类别的效果如下，感觉空间还有很大，若有调参狗，不妨一试。
 
-![](./imgs/n1-2.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs/n1-2.png)
 
 ## 提升的一些想法
 
