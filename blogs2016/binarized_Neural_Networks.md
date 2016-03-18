@@ -12,13 +12,13 @@
 
 直觉上看，二值化的手段非常简单啊，整数是1，负数是-1就可以了。但实际上，这只是其中一种，即决定式的二值化。
 
-![](./imgs_binarized/1.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/1.png)
 
 还有一种是随机式的二值化。
 
-![](./imgs_binarized/2.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/2.png)
 
-![](./imgs_binarized/3.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/3.png)
 
 > 这个样的公式让我想起跟一个大神聊天时谈到的问题，比如，在我之前Google点击率预估那篇博文中提到的一种网络压缩方法，即不适用32bit的浮点数而是使用16bit格式的数字。既然有压缩，那么就会遇到精度问题，比如如果压缩后的数值表示精度能到0.01，而更新的梯度的值没到这个精度，比如0.001，此时该如何更新这个值？
 
@@ -43,15 +43,15 @@
 
 直接对决定式的二值化函数求导的话，那么求导后的值都是0。所以只能采用一种妥协方法，将sign(x)进行宽松。这样，函数就变成可以求导的了。
 
-![](./imgs_binarized/4.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/4.png)
 
 假设，损失函数是C，二值化操作函数如下：
 
-![](./imgs_binarized/5.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/5.png)
 
 如果C对q求导已经得到了，那么C对r的求导计算公式如下：
 
-![](./imgs_binarized/6.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/6.png)
 
 其中1<sub>|r|<=1</sub>的计算公式就是Htanh。
 
@@ -66,8 +66,8 @@
 
 前面的几条技巧，就可以解决求导的问题了。普通卷积神经网络加上BatchNormalization再加上二值化后的模型训练流程如下：
 
-![](./imgs_binarized/7.png)
-![](./imgs_binarized/8.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/7.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/8.png)
 
 其实基本流程不难理解，不过猜测实现上还是有很多坑。
 
@@ -89,13 +89,13 @@ Batch Normalization，简称BN。所谓的BN是指在数据经过一层进入下
 
 因为二值化这一特殊情况，所以可以对BN进行优化，可以在不进行乘法的情况下近似计算BN，这就是shift-based Batch Normalization。
 
-![](./imgs_binarized/9.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/9.png)
 
 ## Shift based AdaMax
 
 Adam是一种学习规则，学习规则中最普通的就是SGD，关于Adam的原始论文我倒是还没有读过，且把shift based Adamax的算法列出来吧。
 
-![](./imgs_binarized/10.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/10.png)
 
 ## 第一层
 
@@ -107,13 +107,13 @@ Adam是一种学习规则，学习规则中最普通的就是SGD，关于Adam的
 
 第一层的计算操作如下：
 
-![](./imgs_binarized/11.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/11.png)
 
 这个函数就把像素值还原回来了，x<sup>n</sup>的意思我理解是每个数都取第n位。这样累加之后，所有的像素值都被还原了。
 
 这样，各层的计算方法如下：
 
-![](./imgs_binarized/12.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/12.png)
 
 # 性能分析
 
@@ -124,7 +124,7 @@ Adam是一种学习规则，学习规则中最普通的就是SGD，关于Adam的
 - 内存和计算耗能
 	- 内存访问耗时比计算耗时要多
 	- 相对于32bit的DNN，BNN内存需求量减少为原来的1/32还少，使得能源使用减少31/32。
-	![](./imgs_binarized/13.png)
+	![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/13.png)
 
 
 - XNOR-Count
@@ -138,11 +138,11 @@ Adam是一种学习规则，学习规则中最普通的就是SGD，关于Adam的
 
 - 对于位操作而言，可以使用SWAR中的SIMD并行化指令来进行加速。即将32个二值化变量存储在一个32位的寄存器中，从而获得32倍的加速。
 - 神经网络的传播过程中，可以使用SWAR技术来使用3个指令计算32个Connection，如下，从而原先32个时间单元的事情现在（accumulation，popcount，xnor）=1+4+1=6个单元就可以完成，提升5.3倍
-	![](./imgs_binarized/14.png)
+	![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/14.png)
 	
 为了验证上述理论，实现了两个GPU计算核，一个是没有优化的乘法（baseline），一个是使用上面公式的SWAR技术实现的（XNOR）。结果如下：
 
-![](./imgs_binarized/15.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/15.png)
 
 - XNOR相对于baseline快23倍
 - XNOR相对于cuBLAS快3.4倍
@@ -218,7 +218,7 @@ Adam是一种学习规则，学习规则中最普通的就是SGD，关于Adam的
 
 ## 实验结果
 
-![](./imgs_binarized/16.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_binarized/16.png)
 
 
 
