@@ -20,13 +20,13 @@
 
 得益于ReLU，CNN中隐含层有相当一部分的数值会为0。从而，在衡量相关性的时候，发现是这样子的。
 
-![](./imgs_cnn_df/1.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/1.png)
 
 左边是原图，中间是layer1与layer2之间的相关性，注意，相关性同权值参数是不同的东西。越白色的点越趋近于0。那么将这些相关性重新排列之后，如右图所示。可以发现，只有一些比较规整的矩形部分是强相关的。
 
 那么可以通过删除不相关的网络连接，达到删减网络的目的。删减之后的网络结构如下图。
 
-![](./imgs_cnn_df/2.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/2.png)
 
 可以看到，对于稀疏连接的CNN，也有一种数据路由的效果，即数据经过筛选之后发送给不同的节点。
 
@@ -37,13 +37,13 @@
 
 首先看CNN网络的表示方法。
 
-![](./imgs_cnn_df/3.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/3.png)
 
 其中P是线性变换，P后的竖着的波浪线是非线性变换，非线性变换包括sigmoid、ReLU、Dropout等。
 
 然后是树的表示方法。
 
-![](./imgs_cnn_df/4.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/4.png)
 
 在该图中，I是单位矩阵，S是选择子集使用的矩阵，I和S都可以看做是线性变换的一种特例。P<sup>R</sup>是路由节点，它输出一系列概率来决定数据该被发往那个子节点。可以是Single Best模式，也可以是Multi-Way模式，还可以是Soft-Routing模式（发送到所有子节点）。
 
@@ -57,7 +57,7 @@
 
 如下图，将过滤器分成两组，可以减少过滤器之间的联系，原来是100%×100%，现在是2×50%×50%，计算量少了一半。而且更容易并行。
 
-![](./imgs_cnn_df/5.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/5.png)
 
 # 后向传播
 
@@ -65,20 +65,20 @@
 
 例如，对于如下神经网络来说：
 
-![](./imgs_cnn_df/6.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/6.png)
 
 使用平方差损失函数，V<sup>*</sup>是真实标记。
 
-![](./imgs_cnn_df/7.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/7.png)
 
 
-![](./imgs_cnn_df/8.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/8.png)
 
-![](./imgs_cnn_df/9.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/9.png)
 
-![](./imgs_cnn_df/10.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/10.png)
 
-![](./imgs_cnn_df/11.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/11.png)
 
 # 实验
 
@@ -88,26 +88,26 @@
 
 VGG前面不变，将最后一层全连接和softmax层变成树状结构。
 
-![](./imgs_cnn_df/12.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/12.png)
 
-- 路由函数使用感知机模型来做，输出值使用softmax进行归一化作为概率，但感知机的模型参数并未明说
+- 路由函数使用感知机模型来做，输出值使用softmax进行归一化作为概率
 - 由于图中将数据发送给四个子节点，是使用的单位矩阵，所以，我猜测应该是把输出向量进行了切分。这样才能达到，如果只传给一个子节点，大大减少计算量，如果传给所有节点，计算量同全连接相似。这一点论文仍然没有说明。
 
 效果如下：
 
-![](./imgs_cnn_df/13.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/13.png)
 
 - 效果图中是测试时间与准确率的权衡。
 - 每条曲线的变化的参数是multi-routes数目，即将数据发送给几个子节点（我自己猜的）。
 - 可以看到，效果的提升和时间的增加是次线性的，所以随着树的分叉的增多，可以在更多的时间节省下同时保证效果的降低在一定的范围之内。
 
-## 分叉神经网络
+## 树状卷积神经网络
 
 使用ImageNet1000类数据集。
 
 上述实验只是在最后一层上验证了树与CNN结合的好处。在卷积层使用分叉结构的效果并未被测验。此次使用的网络结构如下：
 
-![](./imgs_cnn_df/14.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/14.png)
 
 该网络基于这样一个假设，即：每个filter应该只需要在一些而不是全部的输入feature map上做卷积即可。
 
@@ -119,14 +119,14 @@ VGG前面不变，将最后一层全连接和softmax层变成树状结构。
 - 参数初始化方法与论文参考文献[9]相同
 - 学习速率衰减
 
-	![](./imgs_cnn_df/15.png)
+	![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/15.png)
 - 当验证集上的准确率上升一个层次的时候，学习率10倍衰减，这样进行两次。
 - 该模型训练迭代次数相对于VGG11来说是两倍。
 - 只使用mirroring和random crops来做数据预处理。
 
 效果如下：
 
-![](./imgs_cnn_df/16.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/16.png)
 
 由图中可见，本网络除了逊于GoogLeNet之外，要强于其他的网络。
 
@@ -134,9 +134,9 @@ VGG前面不变，将最后一层全连接和softmax层变成树状结构。
 
 - 使用NIN作为对照模型，为了简化，将NIN模型第一层的192filter变为64filter。
 - 直接通过Bayesian Search来进行模型的自学习。自学习过程中优化
-	- alpha=![](./imgs_cnn_df/17.png)
+	- alpha=![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/17.png)
 	- 学习到的网络如下：
-	![](./imgs_cnn_df/18.png)
+	![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/18.png)
 - 为了对比，同时对NIN网络进行Bayesian优化。
 
 > Bayesian Search还不了解，需要再看看原始论文。
@@ -150,19 +150,19 @@ VGG前面不变，将最后一层全连接和softmax层变成树状结构。
 	- 300个带数据路由的网络使用灰色表示
 	- 绿色的则表示最优解
 
-![](./imgs_cnn_df/19.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/19.png)
 
 ## CNN组合提升
 
 还有一种数据路由的方法就是CNN的组合，即将两个CNN组合到一起，然后使用路由感知器进行组合。如下图：
 
-![](./imgs_cnn_df/20.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/20.png)
 
 两条分支都是使用GoogLeNet，但在测试时，上面的路径不使用oversampling，下面的路径使用10倍oversampling。
 
 > Oversampling我觉得应该是图像的crop，四个角加中心和对称的四个角加中心。
 
-![](./imgs_cnn_df/21.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_cnn_df/21.png)
 
 可以看到，通过这种方式，可以在保证效果的前提下，把计算量降低一半。
 
