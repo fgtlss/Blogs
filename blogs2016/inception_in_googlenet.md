@@ -97,7 +97,7 @@ Rethinking这篇论文中提出了一些CNN调参的经验型规则，暂列如�
 
 ## Smaller convolutions
 
-![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/imgs_inception/7.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/7.png)
 
 简而言之，就是将尺寸比较大的卷积，变成一系列3×3的卷积的叠加，这样既具有相同的视野，还具有更少的参数。
 
@@ -111,19 +111,19 @@ Rethinking这篇论文中提出了一些CNN调参的经验型规则，暂列如�
 
 于是Inception就可以进化了，变成了
 
-![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/imgs_inception/9.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/9.png)
 
 ## Asymmetric Convoluitons
 
 使用3×3的已经很小了，那么更小的2×2呢？2×2虽然能使得参数进一步降低，但是不如另一种方式更加有效，那就是Asymmetric方式，即使用1×3和3×1两种来代替3×3. 如下图所示：
 
-![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/imgs_inception/10.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/10.png)
 
 使用2个2×2的话能节省11%的计算量，而使用这种方式则可以节省33%。
 
 于是，Inception再次进化。
 
-![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/imgs_inception/11.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/11.png)
 
 > 注意：实践证明，这种模式的Inception在前几层使用并不会导致好的效果，在feature_map的大小比较中等的时候使用会比较好
 
@@ -142,11 +142,11 @@ Rethinking这篇论文中提出了一些CNN调参的经验型规则，暂列如�
 
 Grid就是图像在某一层的激活值，即feature_map，一般情况下，如果想让图像缩小，可以有如下两种方式：
 
-![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/imgs_inception/12.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/12.png)
 
 右图是正常的缩小，但计算量很大。左图先pooling会导致特征表征遇到瓶颈，违反上面所说的第一个规则，为了同时达到不违反规则且降低计算量的作用，将网络改为下图：
 
-![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/imgs_inception/13.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/13.png)
 
 使用两个并行化的模块可以降低计算量。
 
@@ -154,7 +154,7 @@ Grid就是图像在某一层的激活值，即feature_map，一般情况下，�
 
 经过上述各种Inception的进化，从而得到改进版的GoogLeNet，如下：
 
-![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/imgs_inception/14.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/14.png)
 
 图中的Figure 4是指没有进化的Inception，Figure 5是指smaller conv版的Inception，Figure 6是指Asymmetric版的Inception。
 
@@ -169,11 +169,11 @@ Grid就是图像在某一层的激活值，即feature_map，一般情况下，�
 
 所以，使用了一种平滑方法，可以使得类别概率之间的差别没有那么大，
 
-![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/imgs_inception/15.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/15.png)
 
 用一个均匀分布做平滑，从而导致目标函数变为：
 
-![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/imgs_inception/16.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_inception/16.png)
 
 该项改动可以提升0.2%。
 
