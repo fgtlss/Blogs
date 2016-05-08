@@ -64,6 +64,7 @@ stanford的绿化情况，看到这些花、这些绿、这样的蓝天，我的
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/6.jpg)
 
 这里应该是教堂的样子，还有基督教的壁画。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/7.jpg)
 
 斯坦福大学建校125周年。这么大的草坪，看起来比小航的操场还要大的样子。令我惊叹。图片中只是一半的草坪，另一半在我身后。
@@ -77,6 +78,7 @@ stanford的绿化情况，看到这些花、这些绿、这样的蓝天，我的
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/9.jpg)
 
 cafe中的画，图也美，句子也很深刻。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/12.jpg)
 
 传说已久的金门大桥，据说早晨或者傍晚会有云飘过来，将桥挡住，只留下那两个支柱可以看到。
@@ -100,6 +102,7 @@ cafe中的画，图也美，句子也很深刻。
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/17.jpg)
 
 一望无际的海平面
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/18.jpg)
 
 这种紫色的话在悬崖上爬的到处都是，据说是外来物种，已经占据了这里。
@@ -111,9 +114,11 @@ cafe中的画，图也美，句子也很深刻。
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/20.jpg)
 
 这里有一座房子，背依青松，面朝大海。恨不为我所有！
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/21.jpg)
 
 落日的晚霞，红彤彤的，我结束了一天的行程。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/22.jpg)
 
 # 伯克利
@@ -123,15 +128,19 @@ cafe中的画，图也美，句子也很深刻。
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/23.jpg)
 
 诺贝尔得主的车位
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/24.jpg)
 
 俯瞰东湾
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/25.jpg)
 
 换个地方再俯瞰
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/26.jpg)
 
 转头一望，两只自由的鸟儿在飞翔
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/27.jpg)
 
 # 又是贵司
@@ -139,6 +148,7 @@ cafe中的画，图也美，句子也很深刻。
 大部分的时间都是在公司附近转悠，有蓝天有草地的地方处处皆是美景。
 
 公司附近的公园。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/29.jpg)
 
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/34.jpg)
@@ -159,6 +169,7 @@ cafe中的画，图也美，句子也很深刻。
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/35.jpg)
 
 Children's Day，贵司的班车站都变得好有爱。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/45.jpg)
 
 # 计算机历史博物馆
@@ -170,9 +181,11 @@ Children's Day，贵司的班车站都变得好有爱。
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/36.jpg)
 
 各种编程语言的发展史，一张图拍不下，只拍了开头，貌似Swift语言还没画上去。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/37.jpg)
 
 右上角那个小Model画风不对啊，明显是混进来的。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/38.jpg)
 
 # 渔人码头
@@ -182,15 +195,19 @@ Children's Day，贵司的班车站都变得好有爱。
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/39.jpg)
 
 一个二战鱼雷
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/40.jpg)
 
 二战潜艇，正在募捐，让它不要沉下去。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/41.jpg)
 
 39号码头的海狮还是海豹啊，都在木板上歇着，这里的鱼腥气非常重。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/42.jpg)
 
 工艺品，我觉得栩栩如生啊，很像西方神话里的人物，让我想起了霍比特人里的场景。不过这次入职倒是有一个新员工，之前是霍比特人和复仇者联盟的渲染编程的，感觉非常牛。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/43.jpg)
 
 
@@ -202,15 +219,19 @@ Children's Day，贵司的班车站都变得好有爱。
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/28.jpg)
 
 stanford shopping center里花卉
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/44.jpg)
 
 每个酒店里都会放一本圣经。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/46.jpg)
 
 机场书店中的书。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/47.jpg)
 
 最后的惊喜，在回国的路上，在俄罗斯的上空，偶然打开窗子的遮光板，我差点喊出来，太壮观了，冰川连连，在这个帝都草长莺飞柳絮飘飘的季节。可以理解为什么清政府觉得这些地方无所谓，可以理解为什么俄罗斯地方那么大人口却那么少，可以理解人类现在所能获得适宜生存的环境是多么的可贵与难得。
+
 ![](http://7xr7dd.com1.z0.glb.clouddn.com/imgs/american/travel/small/48.jpg)
 
 # 这里的人
