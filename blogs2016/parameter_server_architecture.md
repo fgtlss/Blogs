@@ -39,7 +39,7 @@ PS框架属于第三代框架，它基于之前的基础做了更多的优化，
 
 说了那么久的PS，仍然有一种PS是啥的疑惑，请看下图。
 
-![](./imgs_ps/3.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_ps/3.png)
 
 PS架构包括内功和外功两个部分，所谓的外功，就是把计算资源分为两个部分，参数服务器节点和工作节点：
 
@@ -97,15 +97,15 @@ PS架构设计挺好，但实现方面的工作也是大问题，在具体的工
 
 最直接的程序如下，称之为算法1吧。
 
-![](./imgs_ps/2.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_ps/2.png)
 
 它在架构下的流程如下：
 
-![](./imgs_ps/1.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_ps/1.png)
 
 还有一个算法，称之为算法3。
 
-![](./imgs_ps/4.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_ps/4.png)
 
 算法1是最直接的算法，流程就如上面提到的那样，从参数服务器上获取参数，计算梯度，把参数在发给参数服务器更新。
 
@@ -135,7 +135,7 @@ PS架构设计挺好，但实现方面的工作也是大问题，在具体的工
 
 ## Asynchronous Tasks and Dependency
 
-![](./imgs_ps/5.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_ps/5.png)
 
 参数服务器和工作节点之间的通信都属于远程调用，那么，远程调用是比较耗时的行为，如果每次都保持同步的话，那么训练相对于单节点来说是减慢了许多的，因为远程调用的耗时。因而，PS框架让远程调用成为一部调用，比如参数的push和pull发出之后，立即使用当前值开始进行下一步的梯度计算，如上图，迭代11发出push和pull的请求后，立马开始进行梯度计算，而此时，使用的还是迭代10的值。
 
@@ -166,13 +166,13 @@ PS架构设计挺好，但实现方面的工作也是大问题，在具体的工
 
 在刚开始的时候，所有的参数都是一个大向量，时间戳为0，每次来一个范围的更新，如果能找到对应的key，那么直接更新那个key的时间戳就可以了。否则，就可能会对某些向量进行切分，好在，来一次更新请求，最多能把一个区间切分为三个区间，如算法2所示：
 
-![](./imgs_ps/6.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_ps/6.png)
 
 ## message
 
 通信过程中，通信的数据格式一般如下：
 
-![](./imgs_ps/7.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_ps/7.png)
 
 在这个过程中，有两个优化点：
 
@@ -183,7 +183,7 @@ PS架构设计挺好，但实现方面的工作也是大问题，在具体的工
 
 参数服务器集群中每个节点都负责不同区域的参数，那么，类似于hash table，使用hash ring进行实现，key和server id都插入到hash ring上去。如下所示：
 
-![](./imgs_ps/8.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_ps/8.png)
 
 在hash ring分配的节点，称为该range的master节点。
 hash ring存放在server manager节点上。
@@ -192,7 +192,7 @@ hash ring存放在server manager节点上。
 
 使用类似hadoop的chain备份方式，对于一个master节点，如果有更新，先更新它，然后再去更新备份的服务器。
 
-![](./imgs_ps/9.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_ps/9.png)
 
 在更新的时候，由于机器学习算法的特点，可以将多次梯度聚合之后再去更新备份服务器，从而减少带宽。
 
