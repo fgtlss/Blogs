@@ -29,7 +29,7 @@ ReLU的有效性体现在两个方面：
 
 ReLU的区分主要在负数端，根据负数端斜率的不同来进行区分，大致如下图所示。
 
-![](./imgs_relu/1.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_relu/1.png)
 
 普通的ReLU负数端斜率是0，Leaky ReLU则是负数端有一个比较小的斜率，而PReLU则是在后向传播中学习到斜率。而Randomized Leaky ReLU则是使用一个均匀分布在训练的时候随机生成斜率，在测试的时候使用均值斜率来计算。
 
@@ -37,7 +37,7 @@ ReLU的区分主要在负数端，根据负数端斜率的不同来进行区分�
 
 其中，NDSB数据集是Kaggle的比赛，而RReLU正是在这次比赛中崭露头角的。
 
-![](./imgs_relu/7.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_relu/7.png)
 
 通过上述结果，可以看到四点：
 
