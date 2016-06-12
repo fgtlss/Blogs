@@ -18,7 +18,7 @@ TF的特点之一就是可以支持很多种设备，大到GPU、CPU，小到手
 ## 算子(operation)
 在TF的实现中，机器学习算法被表达成图，图中的节点是算子(operation)，节点会有0到多个输出，下图是TF实现的一些算子。
 
-![](./imgs_tensorflow/1.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_tensorflow/1.png)
 
 每个算子都会有属性，所有的属性都在建立图的时候被确定下来，比如，最常用的属性是为了支持多态，比如加法算子既能支持float32，又能支持int32计算。
 
@@ -40,9 +40,9 @@ TF的图中的边分为两种：
 
 下图有一个TF的会话样例和所对应的图示。
 
-![](./imgs_tensorflow/2.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_tensorflow/2.png)
 
-![](./imgs_tensorflow/3.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_tensorflow/3.png)
 
 ## 变量(Variables)
 
@@ -60,7 +60,7 @@ TF的图中的边分为两种：
 
 TF的实现分为了单机实现和分布式实现，在分布式实现中，需要实现的是对client，master，worker process不在同一台机器上时的支持。此时，关于这些进程的调度，使用的是原始论文中参考文献51的调度方式。关于分布式和单机的不同如下图所示：
 
-![](./imgs_tensorflow/4.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_tensorflow/4.png)
 
 ## Single-Device Execution
 
@@ -89,7 +89,7 @@ TF的实现分为了单机实现和分布式实现，在分布式实现中，需
 
 当两个需要通信的op在不同的机器上时，就需要跨设备通信，当它们需要通信时，TF会在它们之间的联系中添加Send和Recv节点，通过Send和Recv之间进行通信来达到op之间通信的效果。如下所示：
 
-![](./imgs_tensorflow/5.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_tensorflow/5.png)
 
 为了优化网络通信，TF会将相同的数据传送合并，如a->b和a->c的传送合并，这一点可以通过Send和Recv很方便的实现。而通过实现Send和Recv，将master节点的通信调度任务解放出来，master就只需要向图中的各个节点发出运行命令就够了，增加了系统的可扩展性。
 
@@ -116,7 +116,7 @@ Send和Recv通过TCP或RDMA来传输数据
 
 对于每张计算图，得到从输入I到输出C的路径，并从C到I回溯，回溯过程中对于路径上的每个节点A，添加另一个节点来计算A'来计算偏导，在计算偏导的过程中，A'不仅仅将上一层传下来的反向导数作为输入，还可能将A的输入和输出也作为其输入。
 
-![](./imgs_tensorflow/6.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_tensorflow/6.png)
 
 在执行前向计算的时候，启发式的优化算法通过观察图中的节点的计算顺序，来决定哪种操作放在哪个节点上，从而帮助用户来内存重用；当启发式的算法无效的时候，用户还可以通过添加控制依赖来自行实现内存上的优化。
 
@@ -132,7 +132,7 @@ Send和Recv通过TCP或RDMA来传输数据
 
 TF支持部分执行，对于多输出的TF图，可能用户只想获取一个输出，此时可以指定需要的输入(feed)和输出(fetch)值。然后TF会自动计算该输出的依赖，然后只计算必要的部分。
 
-![](./imgs_tensorflow/7.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_tensorflow/7.png)
 
 如上图所示，指定b为输入，f为输出，那么此时d、e是不会被计算的。
 
@@ -210,20 +210,20 @@ TF给了用户以极其易用的接口，这就需要底层来自动的做很多
 
 如下图所示：
 
-![](./imgs_tensorflow/8.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_tensorflow/8.png)
 
 ## Model Parallel Training
 
 还可以对模型进行切分，让模型的不同部分执行在不同的设备上，这样可以一个迭代的样本可以在不同的设备上同时执行。如下图所示的LSTM模型：
 
-![](./imgs_tensorflow/9.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_tensorflow/9.png)
 
 
 ## Concurrent Steps for Model Computation PipeLine
 
 为了充分利用同一台设备的计算能力，TF会尽量让相邻的计算在同一台设备上，这样可以节省网络开销，比如对于模型并行来说，如果放在同一个设备上，如下图所示：
 
-![](./imgs_tensorflow/10.png)
+![](https://raw.githubusercontent.com/stdcoutzyx/Blogs/master/blogs2016/imgs_tensorflow/10.png)
 
 > 我个人觉得这是TF区分与Parameter Server的一个大区别，对于TF来说，计算节点是分离的，参数也是分离的，因而其PS也是分离的。每个设备上可能分配了计算节点，然后其对应的ps也在该设备上。因而，传统的PS中，计算和参数是分开的，但计算和参数他们分别是在一起的；而TF中，计算本身是分离的，参数也是分离的，而计算和参数是在一起的。
 
